@@ -13,6 +13,15 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postg
 source env/bbqsite/bin/activate
 pip install django
 pip install django_taggit==1.2.0
+pip install markdown==3.2.1
+pip install psycopg2-binary==2.8.4
+
+
+brew install postresql ---- will need to install postgres on VPS
+
+
+
+
 
 pip freeze > requirements.txt - Use to build requirements.txt
 pip install -r requirements.txt
