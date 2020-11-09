@@ -18,7 +18,7 @@ pip install psycopg2-binary==2.8.4
 
 
 brew install postresql ---- will need to install postgres on VPS
-
+Remember that database is BBQ
 
 
 
