@@ -19,7 +19,10 @@ pip install psycopg2-binary==2.8.4
 
 brew install postresql ---- will need to install postgres on VPS
 Remember that database is BBQ
-
+psql BBQ
+CREATE EXTENSION pg_trgm;
+*Needed for trigramsimilarity*
+*Make sure to update code to include trigramsimilarity search Page 89*
 
 
 
