@@ -25,7 +25,7 @@ SECRET_KEY = 'iifz=*$x_2(*#-8g539_*-=o(#5+r_s+y7y_d_ioh3x!p$9=+2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '157.230.61.139']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '161.35.60.39']
 
 SITE_ID = 1
 
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'bbq.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'BBQ',
+        'NAME': 'bbq',
         'USER': 'bbq',
         'PASSWORD': 'BBQ',
         'HOST': 'localhost',
