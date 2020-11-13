@@ -26,6 +26,15 @@ def get_most_commented_posts(count=5):
            ).order_by('-total_comments')[:count]
 
 
+
+@register.inclusion_tag('blog/post/most_commented.html')
+def show_most_commented_posts(count=5):
+    most_commented_posts = Post.published.annotate(
+               total_comments=Count('comments')
+           ).order_by('-total_comments')[:count]    
+    return { 'most_commented_posts': most_commented_posts}
+
+
 @register.filter(name='markdown')
 def markdown_format(text):
     return mark_safe(markdown.markdown(text))

@@ -7,7 +7,7 @@ from django.views.generic import ListView
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.contrib.postgres.search import TrigramSimilarity
 from .models import Post, Comment
-from .forms import EmailPostForm, CommentForm, SearchForm
+from .forms import EmailPostForm, CommentForm, SearchForm, ContactForm
 from taggit.models import Tag
 
 
@@ -99,7 +99,7 @@ def post_share(request, post_id):
             subject = f"{cd['name']} recommends you read {post.title}"
             message = f"Read {post.title} at {post_url}\n\n" \
                       f"{cd['name']}\'s comments: {cd['comments']}"
-            send_mail(subject, message, 'admin@myblog.com', [cd['to']])
+            send_mail(subject, message, 'admin@bbq2go.net', [cd['to']])
             sent = True
 
     else:
@@ -129,3 +129,28 @@ def post_search(request):
                   {'form': form,
                    'query': query,
                    'results': results})
+def about(request):
+    return render(request, 'blog/about.html')
+
+
+def contact(request):
+    return render(request, 'blog/contact.html')
+
+def contactView(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['admin@bbq2go.net'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('success')
+    return render(request, "contact.html", {'form': form})
+
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')

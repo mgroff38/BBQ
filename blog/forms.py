@@ -15,4 +15,10 @@ class CommentForm(forms.ModelForm):
         fields = ('name', 'email', 'body')
 
 class SearchForm(forms.Form):
-    query = forms.CharField()       
+    query = forms.CharField()
+
+
+class ContactForm(forms.Form):
+    from_email = forms.EmailField(required=True)
+    subject = forms.CharField(required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)       

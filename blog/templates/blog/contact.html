@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+{% block title %}Contact me{% endblock %}
+{% block content %}
+
+<div class="col-md-8">
+    <br>
+    <br>
+    <h1>Feel free to contact us about our Blog!</h1>
+    <form method="get">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+          <button type="submit">Send</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+
+
+
+
