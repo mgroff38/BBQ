@@ -69,11 +69,13 @@
             <form class="form-group" method="post">
                 {{ comment_form | crispy }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Add Comment</button>
                 {% comment %} <p><input type="submit" value="Add comment"></p> {% endcomment %}
                 
             </form>
-        {% endif %}  
+            <br>
+           <ul> <button type="submit" class="btn btn-primary">Add Comment</button></ul>
+        
+            {% endif %}  
         </div>        
     </div>    
 </div>

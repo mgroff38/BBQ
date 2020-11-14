@@ -15,6 +15,7 @@ pip install django
 pip install django_taggit==1.2.0
 pip install markdown==3.2.1
 pip install psycopg2-binary==2.8.4
+pip install django-crispy-forms
 
 'NAME': 'bbq',
 'USER': 'matt',
