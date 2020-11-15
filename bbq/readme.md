@@ -29,7 +29,7 @@ CREATE EXTENSION pg_trgm;
 *Make sure to update code to include trigramsimilarity search Page 89*
 
 git remote add origin git@github.com:mgroff38/bbq.git
-git pull https://github.com/mgroff38/bbq.git
+
 git reset --hard
 
 pip freeze > requirements.txt - Use to build requirements.txt

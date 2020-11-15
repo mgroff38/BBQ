@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['www.bbq2go.xyz', 'bbq2go.xyz', '127.0.0.1', 'localhost', '161.35.60.39']
 
-SITE_ID = 1
+# SITE_ID = 1
 
 # Application definition
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'taggit',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
     'crispy_forms',
