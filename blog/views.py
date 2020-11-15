@@ -137,7 +137,7 @@ def contact(request):
     return render(request, 'blog/contact.html')
 
 def contactView(request):
-    if request.method == 'GET':
+    if request.method == 'POST':
         form = ContactForm()
     else:
         form = ContactForm(request.POST)
