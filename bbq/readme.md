@@ -16,6 +16,8 @@ pip install django_taggit==1.2.0
 pip install markdown==3.2.1
 pip install psycopg2-binary==2.8.4
 pip install django-crispy-forms
+pip install Pillow
+pip install social-auth-app-django==3.1.0
 
 'NAME': 'bbq',
 'USER': 'matt',

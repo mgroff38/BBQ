@@ -7,10 +7,10 @@
     <br>
     <br>
     <h1>Feel free to contact us about our Blog!</h1>
-    <form class="form-group" method="post">
-        {{ ContactForm | crispy }}
+    <form method="GET">
+        {{ form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Contact me"></p>
+        <input type="submit" value="Contact Me">
     </form>
 </div>
 {% endblock content %}

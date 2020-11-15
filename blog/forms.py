@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment
+from .models import Comment, Contact
 
 class EmailPostForm(forms.Form):
     name = forms.CharField(max_length=25)
@@ -18,7 +18,8 @@ class SearchForm(forms.Form):
     query = forms.CharField()
 
 
-class ContactForm(forms.Form):
-    from_email = forms.EmailField(required=True)
-    subject = forms.CharField(required=True)
-    message = forms.CharField(widget=forms.Textarea, required=True)       
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ('first_name', 'email',
+                  'comment')
