@@ -7,18 +7,22 @@
 </head>
 <body>
   <div id="header">
-    <span class="logo">Bookmarks</span>
+    <span class="logo">BBQ2Go</span>
     {% if request.user.is_authenticated %}
     <ul class="menu">
       <li {% if section == "dashboard" %}class="selected"{% endif %}>
         <a href="{% url "dashboard" %}">My dashboard</a>
       </li>
-      <li {% if section == "images" %}class="selected"{% endif %}>
-        <a href="#">Images</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="/about/">About</a>
+    </li>
       </li>
-      <li {% if section == "people" %}class="selected"{% endif %}>
-        <a href="#">People</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="/shop/">Shop</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/blog/">Blog</a>
+    </li>
     </ul>
   {% endif %}
   <span class="user">

@@ -19,15 +19,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap
+from blog.urls import path
+from blog import views
+
 
 sitemaps = {
     'posts': PostSitemap,
 }
 
 urlpatterns = [
-    path('account/', include('account.urls')),
+    path('', include('account.urls')),
     path('admin/', admin.site.urls),
-    path('', include('blog.urls', namespace='blog')),
+    path('blog/', include('blog.urls', namespace='blog')),
+    path('about/', views.about, name='about'),  
+    path('contact/', views.Contact, name='contact'),  
+    path('search/', views.post_search, name='post_search'),   
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap')
