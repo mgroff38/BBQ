@@ -18,6 +18,14 @@ pip install psycopg2-binary==2.8.4
 pip install django-crispy-forms
 pip install Pillow
 pip install social-auth-app-django==3.1.0
+pip install django-extensions==2.2.5
+pip install werkzeug==0.16.0
+pip install pyOpenSSL==19.0.0
+pip install celery==4.4.2
+apt-get install rabbitmq
+pip install flower==0.9.3
+pip install braintree==3.59.0
+pip install WeasyPrint==51
 
 'NAME': 'bbq',
 'USER': 'matt',
@@ -32,6 +40,12 @@ CREATE EXTENSION pg_trgm;
 
 git remote add origin git@github.com:mgroff38/bbq.git
 
+git pull https://github.com/mgroff38/bbq.git
+
+git add -A - do this everytime you want to push to github
+git commit -m "some sensible and descriptive commit message describing why the codebase has changed" - do this everytime you want to push to github
+git remote add origin https://github.com/<your-account>/<your-repo>.git - only needed once
+git push -u origin master - do this everytime you want to push to github
 git reset --hard
 
 pip freeze > requirements.txt - Use to build requirements.txt

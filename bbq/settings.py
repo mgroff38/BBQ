@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'social_django',
     'django_extensions',
+    'shop.apps.ShopConfig',
+    'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -136,6 +141,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+CART_SESSION_ID = 'cart'
+
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media/') 
 MEDIA_URL = '/media/'
 
@@ -151,3 +158,20 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '583519005466-84nkln423bnsgrrg958o3fhnrehgc6ts.apps.googleusercontent.com' # Google Consumer Key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '8IFxsGB-yGoAdpiTRGITOQgM' # Google Consumer Secret
+
+
+
+#Braintree Settings
+BRAINTREE_MERCHANT_ID = 'k6dtvywbdb742rb4'
+BRAINTREE_PUBLIC_KEY = 'hjktsmfp69yz2gvq'
+BRAINTREE_PRIVATE_KEY = '57bf47c637b6599133d9db72b4fe1b6d'
+
+
+import braintree
+
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)

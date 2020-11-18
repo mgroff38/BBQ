@@ -35,9 +35,16 @@ urlpatterns = [
     path('contact/', views.Contact, name='contact'),  
     path('search/', views.post_search, name='post_search'),   
     path('social-auth/', include('social_django.urls', namespace='social')),
+    path('cart/', include('cart.urls', namespace='cart')),
+    path('create/', include('orders.urls', namespace='orders')),
+    path('shop/', include('shop.urls', namespace='shop')),
+    path('orders/', include('orders.urls', namespace='orders')),
+    path('payment/', include('payment.urls', namespace='payment')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                             document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, 
+                          document_root=settings.STATIC_ROOT)
