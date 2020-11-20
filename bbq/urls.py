@@ -28,9 +28,9 @@ sitemaps = {
 }
 
 urlpatterns = [
-    path('', include('account.urls')),
+    path('account/', include('account.urls')),
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls', namespace='blog')),
+    path('', include('blog.urls', namespace='blog')),
     path('about/', views.about, name='about'),  
     path('contact/', views.Contact, name='contact'),  
     path('search/', views.post_search, name='post_search'),   

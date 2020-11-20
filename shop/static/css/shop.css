@@ -1,4 +1,20 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+html,
+body {
+    height: 100%;
+}
+
+body {
+  padding-top: 56px;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
 
 body { 
     margin:0;

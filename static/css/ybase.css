@@ -1,4 +1,41 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+html,
+body {
+    height: 100%;
+}
+
+body {
+  padding-top: 56px;
+}
+a {
+    color:#5c615e;
+    text-decoration:none;
+   
+}
+.social li.google { 
+    background:#3b5399;
+    float:right;
+ }
+
+a:hover {
+    color:#5c615e;
+}
+
+#header {
+    padding:10px 100px;
+    font-size:14px;
+    background:#5c615e;
+    color:#fff;
+    border-bottom:4px solid #5c615e;
+    overflow:auto;
+}
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
 
 body { 
     margin:0;
