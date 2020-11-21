@@ -26,17 +26,10 @@ apt-get install rabbitmq
 pip install flower==0.9.3
 pip install braintree==3.59.0
 pip install WeasyPrint==51
+pip install -U python-dotenv
 
-'NAME': 'bbq',
-'USER': 'matt',
-'PASSWORD': 'BBQ',
 
 brew install postresql ---- will need to install postgres on VPS
-Remember that database is BBQ
-psql BBQ
-CREATE EXTENSION pg_trgm;
-*Needed for trigramsimilarity*
-*Make sure to update code to include trigramsimilarity search Page 89*
 
 git remote add origin git@github.com:mgroff38/bbq.git
 

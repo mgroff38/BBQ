@@ -27,11 +27,17 @@ h2 {
   color:#2e97dd;
 }
 
-p {
+h6 {
   color:#f2f5f7;
 }
 
+text-body {
+  color:#080808;
+}
 
+p {
+  color:#080808;
+}
 
 #page-content {
   flex: 1 0 auto;

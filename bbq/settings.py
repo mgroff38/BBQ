@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'iifz=*$x_2(*#-8g539_*-=o(#5+r_s+y7y_d_ioh3x!p$9=+2'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'bbq',
         'USER': 'bbq',
-        'PASSWORD': 'BBQ',
+        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -156,15 +158,15 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
 ]
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '583519005466-84nkln423bnsgrrg958o3fhnrehgc6ts.apps.googleusercontent.com' # Google Consumer Key
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '8IFxsGB-yGoAdpiTRGITOQgM' # Google Consumer Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY") # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET") # Google Consumer Secret
 
 
 
 #Braintree Settings
-BRAINTREE_MERCHANT_ID = 'k6dtvywbdb742rb4'
-BRAINTREE_PUBLIC_KEY = 'hjktsmfp69yz2gvq'
-BRAINTREE_PRIVATE_KEY = '57bf47c637b6599133d9db72b4fe1b6d'
+BRAINTREE_MERCHANT_ID = os.getenv("BRAINTREE_MERCHANT_ID")
+BRAINTREE_PUBLIC_KEY = os.getenv("BRAINTREE_PUBLIC_KEY")
+BRAINTREE_PRIVATE_KEY = os.getenv("BRAINTREE_PRIVATE_KEY")
 
 
 import braintree

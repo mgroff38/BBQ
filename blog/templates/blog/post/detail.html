@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-
+<link href="{% static "css/blog-post.css" %}" rel="stylesheet">
 <!-- Post Content Column -->
 <div class="col-lg-8">
     <!-- Title -->
@@ -12,13 +12,15 @@
 
     <!-- Author -->
     <p class="lead">
-        by <h2 href="#">{{ post.author }}</h2>
+        <h6>by</h6> <h2 href="#">{{ post.author }}</h2>
     </p>
 
     <hr>
     <!-- Date/Time -->    
     <p class="date">
-        Published {{ post.publish }} by {{ post.author }}
+        <div class="text-body">
+     <h6>   Published {{ post.publish }} by {{ post.author }} </h6>
+        </div>
     </p>
 
     <hr>
@@ -27,8 +29,10 @@
     
     <hr>
     <!-- Post Content -->
+   <h6>
     {% comment %} {{ post.body|linebreaks }} {% endcomment %}
-    {{ post.body|markdown }}    
+    {{ post.body|markdown }}
+    </h6>
     <hr>
 
     <h2>Similar posts</h2>

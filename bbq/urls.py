@@ -23,6 +23,7 @@ from blog.urls import path
 from blog import views
 
 
+
 sitemaps = {
     'posts': PostSitemap,
 }
