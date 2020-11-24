@@ -6,8 +6,8 @@ from django.core.mail import send_mail
 from django.views.generic import ListView
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.contrib.postgres.search import TrigramSimilarity
-from .models import Post, Comment, Contact
-from .forms import EmailPostForm, CommentForm, SearchForm, ContactForm
+from .models import Post, Comment
+from .forms import EmailPostForm, CommentForm, SearchForm
 from taggit.models import Tag
 
 
@@ -42,12 +42,16 @@ def post_detail(request, year, month, day, post):
                                    publish__year=year,
                                    publish__month=month,
                                    publish__day=day)
+        # List of similar posts
+    post_tags_ids = post.tags.values_list('id', flat=True)
+    similar_posts = Post.published.filter(tags__in=post_tags_ids)\
+                                  .exclude(id=post.id)
+    similar_posts = similar_posts.annotate(same_tags=Count('tags'))\
+                                .order_by('-same_tags','-publish')[:4]
 
     # List of active comments for this post
     comments = post.comments.filter(active=True)
-
     new_comment = None
-
     if request.method == 'POST':
         # A comment was posted
         comment_form = CommentForm(data=request.POST)
@@ -60,13 +64,6 @@ def post_detail(request, year, month, day, post):
             new_comment.save()
     else:
         comment_form = CommentForm()
-
-    # List of similar posts
-    post_tags_ids = post.tags.values_list('id', flat=True)
-    similar_posts = Post.published.filter(tags__in=post_tags_ids)\
-                                  .exclude(id=post.id)
-    similar_posts = similar_posts.annotate(same_tags=Count('tags'))\
-                                .order_by('-same_tags','-publish')[:4]
 
     return render(request,
                   'blog/post/detail.html',
@@ -136,16 +133,3 @@ def about(request):
 #def contact(request):
  #   return render(request, 'blog/contact.html')
 
-def Contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            contact = form.save()
-            return render(request,
-                          'blog/contact.html',
-                          {'Contact': Contact})
-    else:
-        form = ContactForm()
-    return render(request,
-                  'blog/contact.html',
-                   {'Contact': Contact})

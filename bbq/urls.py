@@ -33,7 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls', namespace='blog')),
     path('about/', views.about, name='about'),  
-    path('contact/', views.Contact, name='contact'),  
+    # path('contact/', views.Contact, name='contact'),  
     path('search/', views.post_search, name='post_search'),   
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('cart/', include('cart.urls', namespace='cart')),

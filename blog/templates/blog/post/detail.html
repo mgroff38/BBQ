@@ -4,6 +4,9 @@
 {% load crispy_forms_tags %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
+
+
+
 <link href="{% static "css/blog-post.css" %}" rel="stylesheet">
 <!-- Post Content Column -->
 <div class="col-lg-8">
@@ -29,7 +32,7 @@
     
     <hr>
     <!-- Post Content -->
-   <h6>
+    <h6>
     {% comment %} {{ post.body|linebreaks }} {% endcomment %}
     {{ post.body|markdown }}
     </h6>
@@ -73,14 +76,12 @@
             <form class="form-group" method="post">
                 {{ comment_form | crispy }}
                 {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Add Comment</button>
                 {% comment %} <p><input type="submit" value="Add comment"></p> {% endcomment %}
                 
             </form>
-            <br>
-           <ul> <button type="submit" class="btn btn-primary">Add Comment</button></ul>
-        
-            {% endif %}  
+        {% endif %}  
         </div>        
     </div>    
-</div>
+</div>   
 {% endblock %}
